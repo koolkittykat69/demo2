@@ -50,7 +50,8 @@ locals {
                           cidrsubnet(aws_vpc.main.cidr_block, 8, i)]
                         )
   priv_subnets  = zipmap(var.avail_zones,
-                         [for i in range(3, length(var.avail_zones)+3) :
+                         [for i in range(length(var.avail_zones)+1,
+                                         length(var.avail_zones)*2 + 1) :
                           cidrsubnet(aws_vpc.main.cidr_block, 8, i)]
                         )
 }
